@@ -2,6 +2,8 @@
 
 use DBI;
 use Digest::MD5 qw(md5 md5_hex md5_base64);
+use File::Basename;
+use lib dirname (__FILE__);
 use config qw(%conf);
 
 # Connect to target DB

@@ -2,6 +2,8 @@
 
 use DBI;
 use Digest::MD5 qw(md5 md5_hex md5_base64);
+use File::Basename;
+use lib dirname (__FILE__);
 use config qw(%conf);
 
 # Connect to target DB
@@ -49,10 +51,17 @@ $sqr->execute();
 my($id, $proj_name, $proj_desc);
 $sqr->bind_columns(undef, \$id, \$proj_name, \$proj_desc);
 
+my $i = 1;
+my %projects;
+
 while($sqr->fetch())
 {
 
-	next if ($proj_desc !~ /svn:(.*)$/m);
+next if ($proj_desc !~ /svn:(.*)$/m);
+  %projects{$proj_name} = (
+    svn  => $1,
+    
+}
 
 	print $fh "#Project Name: $proj_name\n";
 	print $fh "[$1]\n";
