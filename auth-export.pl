@@ -2,12 +2,12 @@
 
 use DBI;
 use Digest::MD5 qw(md5 md5_hex md5_base64);
-
+use config qw(%conf);
 
 # Connect to target DB
-my $dbh = DBI->connect("DBI:mysql:database=mantis;host=master","mantis","mantis", {'RaiseError' => 1, mysql_enable_utf8 => 1});
+my $dbh = DBI->connect("DBI:mysql:database=$conf{dbName};host=$conf{dbHost}","$conf{dbUser}","$conf{dbPass}", {'RaiseError' => 1});
 
-my $filename="access-file";
+my $filename=$conf{accessFile};
 open(my $fh, '>:utf8', $filename) or die "Could not open file '$filename' $!";
 
 print $fh "[groups]\n";

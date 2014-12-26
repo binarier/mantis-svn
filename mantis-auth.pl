@@ -2,6 +2,7 @@
 
 use DBI;
 use Digest::MD5 qw(md5 md5_hex md5_base64);
+use config qw(%conf);
 
 chomp($user = <STDIN>);
 chomp($pass = <STDIN>);

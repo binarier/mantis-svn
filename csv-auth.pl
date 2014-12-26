@@ -1,11 +1,12 @@
 #!/usr/bin/perl
 use Digest::MD5 qw(md5 md5_hex md5_base64);
+use config qw(%conf);
 
 chomp($user = <STDIN>);
 chomp($pass = <STDIN>);
 $pass_hex = md5_hex($pass);
- 
-open(my $data, '<', '/var/lib/mantis-svn/users.csv') or die "Could not open '$file' $!\n";
+
+open(my $data, '<', $conf{userFile}) or die "Could not open '$conf{userFile}' $!\n";
 while (my $line = <$data>) {
   chomp $line;
  
