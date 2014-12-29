@@ -6,6 +6,7 @@ mantis-svn
 requirement:
 
 mod_authnz_external - 集成到httpd用户认证
+perl-Net-SCP - 用于scp分发（可选）
 
 example:
 
