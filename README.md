@@ -28,3 +28,22 @@ SetExternalAuthMethod ca pipe
   ModMimeUsePathInfo on
   SVNAdvertiseV2Protocol on
 </Location>
+
+mantis 修改:
+
+core/project_api.php (添加svn_export_auth()):
+
+require_once( 'svn_export_api.php' );
+
+project_add_user
+project_update_user_access
+project_remove_user
+project_remove_all_users
+
+core/user_api.php(添加svn_export_user()):
+
+require_once( 'svn_export_api.php' );
+
+user_delete
+user_set_password
+
